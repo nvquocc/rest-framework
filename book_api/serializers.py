@@ -12,3 +12,14 @@ class BookSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return Book.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.number_of_pages = validated_data.get(
+            'number_of_pages', instance.number_of_pages)
+        instance.publish_date = validated_data.get(
+            'publish_date', instance.publish_date)
+
+        instance.quantity = validated_data.get('quantity', instance.quantity)
+        instance.save()
+        return instance
