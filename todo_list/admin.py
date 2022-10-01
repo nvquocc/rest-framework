@@ -1,4 +1,6 @@
 from django.contrib import admin
-from book_api.models import Book
+
+from todo_list.models import Task
+
 # Register your models here.
-# admin.site.register(Book)
+admin.site.register(Task)
